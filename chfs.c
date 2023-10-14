@@ -9,7 +9,7 @@ bool check_file_status(char *pathname, struct stat *statbuf)
 {
 	int stat_return;
 
-	stat_return = stat(pathname,  struct stat *statbuf);
+	stat_return = stat(pathname, struct stat *statbuf);
 
 	if (stat_return == 0)
 

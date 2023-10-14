@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 /**
  * _strncmp - This program compares the first n characters of two strings.
  *@s1:First string to be competed.

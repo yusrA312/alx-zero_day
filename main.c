@@ -1,4 +1,5 @@
-i#include "main.h"
+#include "main.h"
+
 /**
  * main - Entry point for the custom shell program.
  * @argc: Number of arguments provided.
@@ -8,7 +9,7 @@ i#include "main.h"
  */
 int main(int argc, char *argv[], char **env)
 {
-	char **args, *buff = NULL, *prompt = "$ ";
+	char **args, *buff = NULL, *prompt= "$ ";
 	size_t no_of_args, buff_size = 0;
 	ssize_t bytes;
 	pid_t wpid;
@@ -29,14 +30,18 @@ int main(int argc, char *argv[], char **env)
 		if (handle_builtin(args, no_of_args))
 			continue;
 		if (!check_file_status(args[0], &statbuf))
-		{ fullpath = check_file_in_path(args[0], &statbuf);
+		{
+			fullpath = check_file_in_path(args[0], &statbuf);
 			if (!fullpath)
-			{ perror("Error (file status)");
+			{
+				perror("Error (file status)");
 				free_vector(args, no_of_args);
-				continue; }
-			else
-			{ free(args[0]);
-				args[0] = fullpath; }
+				continue;
+			} else
+			{
+				free(args[0]);
+				args[0] = fullpath;
+			}
 		}
 		wpid = fork();
 		if (wpid == -1)
@@ -45,7 +50,7 @@ int main(int argc, char *argv[], char **env)
 			execute(args, no_of_args, env);
 		if (waitpid(wpid, &wstatus, 0) == -1)
 			waiterr();
-		free_vector(args, no_of_args); }
+		free_vector(args, no_of_args);
+	}
 	free(buff);
-	return (0);
-}
+	return (0); }

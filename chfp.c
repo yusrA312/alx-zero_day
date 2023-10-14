@@ -19,9 +19,9 @@ char *check_file_in_path(char *filename, struct stat *statbuf)
 
 	for (s = 0; s < no_of_paths; s++)
 	{
-		full_path = strs_concat(3, paths[s], "/", filename);
+		full_path = str_concat(paths[s], "/", filename);
 
-		if (check_ifile_status(full_path, statbuf))
+		if (check_file_status(full_path, statbuf))
 {
 			free_vector(paths, no_of_paths);
 			return (full_path);
