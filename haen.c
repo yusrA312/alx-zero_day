@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- *hadle_env - handles the env built-in command
+ *handle_env - handles the env built-in command
  *@env_args: Arguments for the env command
  *@no_of_args :Mumber of arguments passed.
  *Return: Nothing
@@ -13,7 +13,6 @@ void handle_env(char **env_args, size_t no_of_args)
 }
 /**
  *_printenv - prints the environment variables of the current system
- *@var: counter
  *Return: Nothing
  */
 void _printenv(void)

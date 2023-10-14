@@ -1,7 +1,6 @@
 #include "main.h"
 
 /**
- * You *  Uncommitted changes
  * handle_exit - handles the 'exit' buil-in command
  * @exit_args: Arrguments for the exit command.
  * @no_of_args: Number of arguments passed.

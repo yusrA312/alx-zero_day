@@ -7,6 +7,7 @@
 char *_getenv(char *key)
 {
 	size_t namelen = strlen(key);
+	char **ptr = environ;
 
 	while (*ptr)
 	{

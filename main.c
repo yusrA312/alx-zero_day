@@ -1,4 +1,4 @@
-#include "main.h"
+i#include "main.h"
 /**
  * main - Entry point for the custom shell program.
  * @argc: Number of arguments provided.
@@ -6,10 +6,8 @@
  * @env: Environment variables.
  * Return: Exit status.
  */
-
 int main(int argc, char *argv[], char **env)
 {
-	int unusedVariable attribute((unused)), wstatus;
 	char **args, *buff = NULL, *prompt = "$ ";
 	size_t no_of_args, buff_size = 0;
 	ssize_t bytes;
@@ -30,20 +28,15 @@ int main(int argc, char *argv[], char **env)
 		args = split_string(buff, " ", &no_of_args);
 		if (handle_builtin(args, no_of_args))
 			continue;
-		if (check_file_status(args[0],  struct stat *statbuf))
-		{
-			fullpath = check_file_in_path(args[0],  struct stat *statbuf);
+		if (!check_file_status(args[0], &statbuf))
+		{ fullpath = check_file_in_path(args[0], &statbuf);
 			if (!fullpath)
-			{
-				perror("Error (file status)");
+			{ perror("Error (file status)");
 				free_vector(args, no_of_args);
-				continue;
-			}
+				continue; }
 			else
-			{
-				free(args[0]);
-				args[0] = fullpath;
-			}
+			{ free(args[0]);
+				args[0] = fullpath; }
 		}
 		wpid = fork();
 		if (wpid == -1)
@@ -52,7 +45,7 @@ int main(int argc, char *argv[], char **env)
 			execute(args, no_of_args, env);
 		if (waitpid(wpid, &wstatus, 0) == -1)
 			waiterr();
-		free_vector(args, no_of_args);
-	}
+		free_vector(args, no_of_args); }
 	free(buff);
 	return (0);
+}

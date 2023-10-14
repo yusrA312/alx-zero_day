@@ -9,7 +9,7 @@
  * Return: The full path of the file or MULL if not found.
  */
 
-char *check_file_in_path(char *filename, *struct stat *statbuf)
+char *check_file_in_path(char *filename, struct stat *statbuf)
 {
 	size_t s, no_of_paths;
 	char *full_path;
